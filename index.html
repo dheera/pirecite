@@ -60,6 +60,7 @@ wbr:after {content:"\00200B";}
 
 -->
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/1.4.0/annyang.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="http://ricostacruz.com/jquery.transit/jquery.transit.min.js"></script>
 </head>
@@ -136,6 +137,27 @@ $(document).keydown(function(event) {
 
   event.preventDefault();
 });
+
+if (annyang) {
+  var commands = {
+    'zero':   function() { console.log('0'); },
+    'one':    function() { console.log('1'); },
+    'two':    function() { console.log('2'); },
+    'three':  function() { console.log('3'); },
+    'four':   function() { console.log('4'); },
+    'five':   function() { console.log('5'); },
+    'six':    function() { console.log('6'); },
+    'seven':  function() { console.log('7'); },
+    'eight':  function() { console.log('8'); },
+    'nine':   function() { console.log('9'); },
+    'point':  function() { console.log('.'); }
+  };
+
+  annyang.addCommands(commands);
+
+  annyang.start();
+}
+
 </script>
 </body>
 </html>
