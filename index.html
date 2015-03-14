@@ -153,7 +153,9 @@ if (annyang) {
     'seven':  function() { tryDigit('7'); },
     'eight':  function() { tryDigit('8'); },
     'nine':   function() { tryDigit('9'); },
-    'point':  function() { tryDigit('.'); }
+    'point':  function() { tryDigit('.'); },
+    'back':   function() { tryDigit('backspace'); },
+    'backspace':  function() { tryDigit('backspace'); }
   };
 
   annyang.addCommands(commands);
