@@ -119,8 +119,13 @@ keyCodeMap = {
 }
 
 $(document).keydown(function(event) {
-  numDigits = $('#digits-frame').children().length;
+  event.preventDefault();
   var n = keyCodeMap[event.which];
+  tryDigit(n);
+});
+
+function tryDigit(n) {
+  numDigits = $('#digits-frame').children().length;
   if(n === 'backspace') {
     $('#digits-frame').children().last().remove();
   } else if(n) {
@@ -134,23 +139,21 @@ $(document).keydown(function(event) {
   numDigits = $('#digits-frame').children().length;
 
   $('#numdigits').html('<b>'+(numDigits-2).toString()+'</b> digits');
-
-  event.preventDefault();
-});
+}
 
 if (annyang) {
   var commands = {
-    'zero':   function() { console.log('0'); },
-    'one':    function() { console.log('1'); },
-    'two':    function() { console.log('2'); },
-    'three':  function() { console.log('3'); },
-    'four':   function() { console.log('4'); },
-    'five':   function() { console.log('5'); },
-    'six':    function() { console.log('6'); },
-    'seven':  function() { console.log('7'); },
-    'eight':  function() { console.log('8'); },
-    'nine':   function() { console.log('9'); },
-    'point':  function() { console.log('.'); }
+    'zero':   function() { tryDigit('0'); },
+    'one':    function() { tryDigit('1'); },
+    'two':    function() { tryDigit('2'); },
+    'three':  function() { tryDigit('3'); },
+    'four':   function() { tryDigit('4'); },
+    'five':   function() { tryDigit('5'); },
+    'six':    function() { tryDigit('6'); },
+    'seven':  function() { tryDigit('7'); },
+    'eight':  function() { tryDigit('8'); },
+    'nine':   function() { tryDigit('9'); },
+    'point':  function() { tryDigit('.'); }
   };
 
   annyang.addCommands(commands);
